@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "Zatar's Client API",
-        "description": "Enjoy this Swagger-ific, interactive API documentation.",
+        "description": "Interactive API documentation (powered by Swagger)",
         "version": "1.0.0"
     },
     "host": "api.zatar.com",
