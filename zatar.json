@@ -679,6 +679,47 @@
                 }
             }
         },
+        "/avatardefinitions/required": {
+            "get": {
+                "summary": "List of required items in an Avatar defintions.",
+                "description": "Retrieve a list of the required attributes that must exist in new Avatar defintions. ",
+                "operationId": "AvatarDefinitionsRequiredGet",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Avatars"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported media type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
         "/avatardefinitions/{avatar_defintion_id}": {
             "get": {
                 "summary": "Retrieve a specific avatar definition",
