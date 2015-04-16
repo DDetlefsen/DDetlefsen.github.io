@@ -455,6 +455,140 @@
                 }
             }
         },
+        "/worlds": {
+            "get": {
+                "summary": "Retrieve a collection of worlds",
+                "description": "Retrieve a collection of worlds via HTTP GET",
+                "operationId": "getWorlds",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Worlds"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}": {
+            "put": {
+                "summary": "Change some of the resources the world can contain",
+                "description": "Currently only name of the world can be changed. Invite a user to join a world does not use PUT. Transferring ownership of a world is currently not supported. The creator of the world remains the only owner.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "World Object",
+                        "in": "body",
+                        "description": "World Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/WorldObject"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Worlds"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Ban Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported Media Type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Retrieve a specific world",
+                "description": "Retrieves a world resource and its associated resources.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Worlds"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
         "/avatardefinitions": {
             "post": {
                 "operationId": "avatarDefinitions",
@@ -627,236 +761,6 @@
                     },
                     "403": {
                         "description": "Forbitdden"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    },
-                    "406": {
-                        "description": "Not acceptable"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    },
-                    "default": {
-                        "description": "Unexpected error"
-                    }
-                }
-            }
-        },
-        "/avatardefinitions/{avatar_defintion_id}/firmware": {
-            "get": {
-                "summary": "Retrieve a collection of avatar definition firmware",
-                "description": "All existing firmwares for an avatar definition Id can be retrieved by performing an HTTP GET.",
-                "operationId": "getAvatarDefinitionFirmwares",
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "avatar_defintion_id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "tags": [
-                    "Avatars",
-                    "Firmware"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    },
-                    "406": {
-                        "description": "Not acceptable"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    },
-                    "default": {
-                        "description": "Unexpected error"
-                    }
-                }
-            }
-        },
-        "/avatardefinitions/{avatar_definition_id}/firmware/{firmware_id}": {
-            "get": {
-                "summary": "Retrieve a specific avatar definition firmware",
-                "description": "Specific firmware versions associated with an avatar definition Id can be retrieved by performing an HTTP GET.",
-                "operationId": "getAvatarDefinitionFirmware",
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "avatar_definition_id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "firmware_id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "tags": [
-                    "Avatars",
-                    "Firmware"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    },
-                    "406": {
-                        "description": "Not acceptable"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    },
-                    "default": {
-                        "description": "Unexpected error"
-                    }
-                }
-            }
-        },
-        "/worlds": {
-            "get": {
-                "summary": "Retrieve a collection of worlds",
-                "description": "Retrieve a collection of worlds via HTTP GET",
-                "operationId": "getWorlds",
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "tags": [
-                    "worlds"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "Unauthorized"
-                    },
-                    "406": {
-                        "description": "Not acceptable"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    },
-                    "default": {
-                        "description": "Unexpected error"
-                    }
-                }
-            }
-        },
-        "/worlds/{world_id}": {
-            "put": {
-                "summary": "Change some of the resources the world can contain",
-                "description": "Currently only name of the world can be changed. Invite a user to join a world does not use PUT. Transferring ownership of a world is currently not supported. The creator of the world remains the only owner.",
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "world_id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "World Object",
-                        "in": "body",
-                        "description": "World Object",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/WorldObject"
-                        }
-                    }
-                ],
-                "tags": [
-                    "worlds"
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    },
-                    "400": {
-                        "description": "Ban Request"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Not Found"
-                    },
-                    "406": {
-                        "description": "Not acceptable"
-                    },
-                    "415": {
-                        "description": "Unsupported Media Type"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    },
-                    "default": {
-                        "description": "Unexpected error"
-                    }
-                }
-            },
-            "get": {
-                "summary": "Retrieve a specific world",
-                "description": "Retrieves a world resource and its associated resources.",
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "world_id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "tags": [
-                    "worlds"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "401": {
-                        "description": "Unauthorized"
                     },
                     "404": {
                         "description": "Not Found"
@@ -1195,6 +1099,89 @@
                 }
             }
         },
+        "/worlds/{world_id}/avatars/{avatar_id}/history": {
+            "get": {
+                "summary": "Retrieve history of an avatar for a single device",
+                "description": "Retrieve the history of an avatar for a single device by performing an HTTP GET and including the avatar_id.",
+                "parameters": [
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "lastUpdated",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Avatars",
+                    "Avatar History"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
         "/worlds/{world_id}/avatars/{avatar_id}/jobs": {
             "get": {
                 "summary": "Retrieve a collection of jobs of an avatar",
@@ -1221,7 +1208,7 @@
                 ],
                 "tags": [
                     "Avatars",
-                    "jobs"
+                    "Jobs"
                 ],
                 "responses": {
                     "200": {
@@ -1280,7 +1267,7 @@
                 ],
                 "tags": [
                     "Avatars",
-                    "jobs"
+                    "Jobs"
                 ],
                 "responses": {
                     "200": {
@@ -1307,63 +1294,689 @@
                 }
             }
         },
-        "/worlds/{world_id}/avatars/{avatar_id}/history": {
-            "get": {
-                "summary": "Retrieve history of an avatar for a single device",
-                "description": "Retrieve the history of an avatar for a single device by performing an HTTP GET and including the avatar_id.",
+        "/worlds/{world_id}/avatars/eventdefinitions": {
+            "post": {
+                "operationId": "avatarsEventDefinitionsPost",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "??",
+                "description": "??",
                 "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
                     {
                         "name": "world_id",
                         "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Avatar Event Definition Object",
+                        "in": "body",
+                        "description": "Avatar Event Definition Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AvatarEventDefinitionObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported media type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "operationId": "avatarsEventDefinitionsGet",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "??",
+                "description": "??",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/avatars/eventdefinitions/{event_definition_id}": {
+            "delete": {
+                "operationId": "avatarsEventDefinitionDeleteGet",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "Delete a specific avatar event defintion within a specific world.",
+                "description": "Delete a specific avatar event defintion within a specific world.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "event_definition_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar event profile to delete.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Unauthorized"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "operationId": "avatarsEventDefinitionGet",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "??",
+                "description": "??",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "event_definition_id",
+                        "in": "path",
+                        "description": "The resource ID of the event defintion.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "avatarsEventDefinitionPut",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "??",
+                "description": "??",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "event_definition_id",
+                        "in": "path",
+                        "description": "The resource ID of the event defintion.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Avatar Event Definition Object",
+                        "in": "body",
+                        "description": "Avatar Event Definition Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AvatarEventDefinitionObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported Media Type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/avatars/{avatar_id}/eventdefinitions": {
+            "post": {
+                "operationId": "avatarEventDefinitionsPost",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "??",
+                "description": "??",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "avatar_id",
                         "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
                         "required": true,
                         "type": "string"
                     },
                     {
+                        "name": "Avatar Event Definition Object",
+                        "in": "body",
+                        "description": "Avatar Event Definition Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AvatarEventDefinitionObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported media type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "operationId": "avatarEventDefinitionsGet",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "??",
+                "description": "??",
+                "parameters": [
+                    {
                         "name": "token",
                         "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/avatars/{avatar_id}/eventdefinitions/{event_definition_id}": {
+            "delete": {
+                "operationId": "avatarEventDefinitionDeleteGet",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "Delete a specific avatar event defintion within a specific world.",
+                "description": "Delete a specific avatar event defintion within a specific world.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "event_definition_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar event profile to delete.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported Media Type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "operationId": "avatarEventDefinitionGet",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "??",
+                "description": "??",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "event_definition_id",
+                        "in": "path",
+                        "description": "The resource ID of the event defintion.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "avatarEventDefinitionPut",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "??",
+                "description": "??",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "event_definition_id",
+                        "in": "path",
+                        "description": "The resource ID of the event defintion.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Avatar Event Definition Object",
+                        "in": "body",
+                        "description": "Avatar Event Definition Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AvatarEventDefinitionObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported Media Type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/avatars/events": {
+            "get": {
+                "operationId": "avatarsEventsGet",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "Get events across all the avatars in a world.",
+                "description": "Displays events of event definitions that are defined at the scope avatars.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "name": "limit",
                         "in": "query",
+                        "description": "Limits events returned to exact number. If not specified, defaults to 2.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "offset",
                         "in": "query",
+                        "description": "Defines offset for pagination of results and returns value as integer. If not specified, defaults to 0.",
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "sort",
                         "in": "query",
+                        "description": "Gives user ability to sort events in ascending or descending order based on triggerDate. Expected values are asc for ascending and desc for descending. If not specified defaults to desc.",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "lastUpdated",
+                        "name": "eventEndDate",
                         "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "fields",
-                        "in": "query",
+                        "description": "Defines the offset in terms of ISO8601 date format. Expected value is an ISO8601 date format string and it should not be greater than current time. Only the events that have a eventDate before the specified eventEndDate will be included.",
                         "required": false,
                         "type": "string"
                     }
-                ],
-                "tags": [
-                    "Avatars",
-                    "history"
                 ],
                 "responses": {
                     "200": {
@@ -1390,12 +2003,492 @@
                 }
             }
         },
+        "/worlds/{world_id}/avatars/{avatar_id}/events": {
+            "get": {
+                "operationId": "avatarEventsGet",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "Display events that are triggered on a specific avatar.",
+                "description": "Display events that are triggered on a specific avatar.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limits events returned to exact number. If not specified, defaults to 2.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Defines offset for pagination of results and returns value as integer. If not specified, defaults to 0.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Gives user ability to sort events in ascending or descending order based on triggerDate. Expected values are asc for ascending and desc for descending. If not specified defaults to desc.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "eventEndDate",
+                        "in": "query",
+                        "description": "Defines the offset in terms of ISO8601 date format. Expected value is an ISO8601 date format string and it should not be greater than current time. Only the events that have a eventDate before the specified eventEndDate will be included.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/avatars/{avatar_id}/events/{event_id}": {
+            "get": {
+                "operationId": "avatarEventGet",
+                "tags": [
+                    "Avatars",
+                    "Events"
+                ],
+                "summary": "Retrieve a specific event that was triggered on a specific avatar.",
+                "description": "Retrieve a specific event that was triggered on a specific avatar.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "The resource ID of the event.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limits events returned to exact number. If not specified, defaults to 2.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Defines offset for pagination of results and returns value as integer. If not specified, defaults to 0.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Gives user ability to sort events in ascending or descending order based on triggerDate. Expected values are asc for ascending and desc for descending. If not specified defaults to desc.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "eventEndDate",
+                        "in": "query",
+                        "description": "Defines the offset in terms of ISO8601 date format. Expected value is an ISO8601 date format string and it should not be greater than current time. Only the events that have a eventDate before the specified eventEndDate will be included.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/notifications": {
+            "post": {
+                "operationId": "notificationsPost",
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Creates a Notification of the specified type.",
+                "description": "Creates a Notification of the specified type.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Notification Object",
+                        "in": "body",
+                        "description": "Notification Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NotificationObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported media type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "operationId": "notificationsGet",
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Retrieves all notifications in the specified world.",
+                "description": "Retrieves all notifications in the specified world.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "eventdefinition",
+                        "in": "query",
+                        "description": "Includes the notifications associated with the specified event_definition_id.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/notifications/{notification_id}": {
+            "get": {
+                "operationId": "notificationGet",
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Retrieves the specified notification.",
+                "description": "Retrieves the specified notification.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "notification_id",
+                        "in": "path",
+                        "description": "The resource ID of the notification.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "notificationPut",
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Updates the specified Notification.",
+                "description": "Updates the specified Notification.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "notification_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Notification Object",
+                        "in": "body",
+                        "description": "Notification Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/NotificationObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported media type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "notificationDelete",
+                "tags": [
+                    "Notifications"
+                ],
+                "summary": "Delete the specified notification.",
+                "description": "Delete the specified notification.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "notification_id",
+                        "in": "path",
+                        "description": "The resource ID of the notification.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
         "/worlds/{world_id}/avatargroups": {
             "post": {
                 "operationId": "avatarGroupsPost",
                 "tags": [
                     "Avatars",
-                    "groups"
+                    "Groups"
                 ],
                 "summary": "Creates an avatar group",
                 "description": "Creates an avatar group (static or dynamic based on the content of the payload) with an HTTP POST",
@@ -1455,7 +2548,7 @@
                 "operationId": "avatarGroupsPost",
                 "tags": [
                     "Avatars",
-                    "groups"
+                    "Groups"
                 ],
                 "summary": "Retrieve a collection of avatar groups",
                 "description": "Retrieve a collection of avatar groups via a HTTP GET",
@@ -1502,7 +2595,7 @@
                 "operationId": "avatarGroupPut",
                 "tags": [
                     "Avatars",
-                    "groups"
+                    "Groups"
                 ],
                 "summary": "Change the name of a group",
                 "description": "Change the name of a group with an HTTP PUT",
@@ -1572,7 +2665,7 @@
                 "operationId": "avatarGroupGet",
                 "tags": [
                     "Avatars",
-                    "groups"
+                    "Groups"
                 ],
                 "summary": "Retrieve a specific Avatar group",
                 "description": "Retrieve a specific Avatar group with an HTTP PUT",
@@ -1633,7 +2726,7 @@
                 "operationId": "avatarGroupDelete",
                 "tags": [
                     "Avatars",
-                    "groups"
+                    "Groups"
                 ],
                 "summary": "Delete a specific Avatar group",
                 "description": "Delete a specific Avatar group with an HTTP DELETE",
@@ -1690,7 +2783,7 @@
                 "operationId": "avatarGroupAvatarPost",
                 "tags": [
                     "Avatars",
-                    "groups"
+                    "Groups"
                 ],
                 "summary": "Adds an avatar to an avatar group",
                 "description": "Adds an avatar to an avatar group by performing an HTTP POST.",
@@ -1745,7 +2838,7 @@
                 "operationId": "avatarGroupAvatarsGet",
                 "tags": [
                     "Avatars",
-                    "groups"
+                    "Groups"
                 ],
                 "summary": "Retrieve all the Avatars associated with an Avatar group",
                 "description": "Retrieve all the avatars associated with an Avatar Group with an HTTP GET.",
@@ -1812,7 +2905,7 @@
                 "operationId": "avatarGroupDelete",
                 "tags": [
                     "Avatars",
-                    "groups"
+                    "Groups"
                 ],
                 "summary": "Delete an Avatar from a group",
                 "description": "Deletes a device permanently from a group by performing an HTTP DELETE",
@@ -1871,36 +2964,565 @@
                 }
             }
         },
-        "/worlds/{world_id}/avatarprofiles": {},
-        "/worlds/{world_id}/avatarprofiles/{avatarprofile_id}": {},
-        "/worlds/{world_id}/avatarprofiles/{avatarprofile_id}/avatars": {},
-        "/worlds/{world_id}/avatars/eventdefinitions": {},
-        "/worlds/{world_id}/avatars/eventdefinitions/{event_definition_id}": {},
-        "/worlds/{world_id}/avatars/{avatar_id}/eventdefinitions": {},
-        "/worlds/{world_id}/avatars/{avatar_id}/eventdefinitions/{event_definition_id}": {},
-        "/worlds/{world_id}/avatars/events": {},
-        "/worlds/{world_id}/avatars/{avatar_id}/events": {},
-        "/worlds/{world_id}/avatars/{avatar_id}/events/{event_id}": {},
-        "/worlds/{world_id}/notifications": {},
-        "/worlds/{world_id}/notifications/{notification_id}": {},
-        "/discoverabledevices": {},
-        "/discoverabledevices/{discoverabledevice_id}": {}
-    },
-    "definitions": {
-        "Error": {
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "message": {
-                    "type": "string"
-                },
-                "fields": {
-                    "type": "string"
+        "/worlds/{world_id}/avatarprofiles": {
+            "post": {
+                "operationId": "avatarProfilesPost",
+                "tags": [
+                    "Avatars",
+                    "Profiles"
+                ],
+                "summary": "Create a new avatar profile",
+                "description": "Create a new avatar profile by performing an HTTP POST",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Avatar Profile Object",
+                        "in": "body",
+                        "description": "Avatar Profile Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AvatarProfileObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported media type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "operationId": "avatarProfilesGet",
+                "tags": [
+                    "Avatars",
+                    "Profiles"
+                ],
+                "summary": "Get all avatar profiles within a world",
+                "description": "Get all avatar profiles within a specific world by performing an HTTP GET.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
                 }
             }
         },
+        "/worlds/{world_id}/avatarprofiles/{avatarprofile_id}": {
+            "put": {
+                "operationId": "avatarProfilePut",
+                "tags": [
+                    "Avatars",
+                    "Profiles"
+                ],
+                "summary": "Modify an existing avatar profile",
+                "description": "Modify an existing avatar profile by doing an HTTP PUT. Only existing settings can be modified. No new settings can be added with a PUT. The user issuing this request requires Update permission within the world the avatar profile has been created. This operation will issue an implicit 'apply settings' command to all avatars currently associated to this avatar profile. This is required to maintain consistency between avatars and the associated avatar profile.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatarprofile_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar profile to update.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Avatar Profile Object",
+                        "in": "body",
+                        "description": "Avatar Profile Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AvatarProfileObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "415": {
+                        "description": "Unsupported media type"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "get": {
+                "operationId": "avatarProfileGet",
+                "tags": [
+                    "Avatars",
+                    "Profiles"
+                ],
+                "summary": "Retrieve a specific avatar profile within a specific world.",
+                "description": "Retrieve a specific avatar profile within a specific world.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatarprofile_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar profile to retrieve.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "avatarProfileGet",
+                "tags": [
+                    "Avatars",
+                    "Profiles"
+                ],
+                "summary": "Delete a specific avatar profile within a specific world.",
+                "description": "Delete a specific avatar profile within a specific world.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatarprofile_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar profile to retrieve.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/avatarprofiles/{avatarprofile_id}/avatars": {
+            "get": {
+                "operationId": "avatarProfileAvatarGet",
+                "tags": [
+                    "Avatars",
+                    "Profiles"
+                ],
+                "summary": "Retrieve all avatars in a profile within a specific world.",
+                "description": "Retrieves all the avatars associated with an Avatar Profile with an HTTP GET.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatarprofile_id",
+                        "in": "path",
+                        "description": "The resource ID of the avatar profile to retrieve.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fields",
+                        "in": "query",
+                        "description": "Filters result to only show requested properties as well as avatarDefinitionId, homeWorld, href, sysPrefix.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Forbidden"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/avatardefinitions/{avatar_defintion_id}/firmware": {
+            "get": {
+                "summary": "Retrieve a collection of avatar definition firmware",
+                "description": "All existing firmwares for an avatar definition Id can be retrieved by performing an HTTP GET.",
+                "operationId": "getAvatarDefinitionFirmwares",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_defintion_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Avatars",
+                    "Firmware"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/avatardefinitions/{avatar_definition_id}/firmware/{firmware_id}": {
+            "get": {
+                "summary": "Retrieve a specific avatar definition firmware",
+                "description": "Specific firmware versions associated with an avatar definition Id can be retrieved by performing an HTTP GET.",
+                "operationId": "getAvatarDefinitionFirmware",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_definition_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "firmware_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Avatars",
+                    "Firmware"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not acceptable"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/discoverabledevices": {
+            "post": {
+                "operationId": "discoverabledevicesPost",
+                "tags": [
+                    "Discoverable Devices"
+                ],
+                "summary": "Create a new discoverable device resource by performing an HTTP POST.",
+                "description": "Create a new discoverable device resource by performing an HTTP POST.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Discoverable Devices Object",
+                        "in": "body",
+                        "description": "Discoverable Devices Object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DiscoverableDevicesObject"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        },
+        "/worlds/{world_id}/discoverabledevices/{discoverabledevice_id}": {
+            "get": {
+                "operationId": "discoverabledeviceGet",
+                "tags": [
+                    "Discoverable Devices"
+                ],
+                "summary": "Retrieve discoverable device resource.",
+                "description": "Retrieve discoverable device resource.",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Your login token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "world_id",
+                        "in": "path",
+                        "description": "The resource ID of the world containing the avatar.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "discoverabledevice_id",
+                        "in": "path",
+                        "description": "The resource ID of the discoverable device.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "406": {
+                        "description": "Not Acceptible"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    },
+                    "default": {
+                        "description": "Unexpected error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
         "UserProfileObject": {
             "properties": {
                 "first_name": {
@@ -1943,6 +3565,10 @@
                     "type": "string",
                     "description": "alphanumeric string (a-z, 0-9), case sensitive, must contain one upper case letter, must contain one lower case letter, must contain one number, must contain one special character (@#$%^&+), minimum 8 characters, maximum 16 characters"
                 }
+            },
+            "example": {
+                "email": "myUserName@gmail.com",
+                "password": "P@ssword123"
             }
         },
         "InvitationObject": {
@@ -1968,8 +3594,11 @@
         "RequiredAvatarDefinitionAttributesObject": {
             "properities": {
                 "name": {
-                    "type": "string",
-                    "description": "The name of your Avatar Definition."
+                    "type": "object",
+                    "description": "The name of your Avatar definition",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/AttributePropertiesObject"
+                    }
                 }
             }
         },
@@ -2042,6 +3671,66 @@
                 "name": {
                     "type": "string",
                     "description": "alphanumeric string (a-z, 0-9)"
+                }
+            }
+        },
+        "AvatarProfileObject": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Alphanumeric string (a-z, 0-9), special character support for dashes -, special character support for underscores _, special character support for periods ., not case sensitive, must be between 8-64 characters long, cannot contain two periods next to each other"
+                },
+                "avatarDefinitionId": {
+                    "type": "string",
+                    "description": "alphanumeric string (a-z, 0-9) value identifying the avatar definition to be used for this avatar profile"
+                },
+                "settings": {
+                    "type": "string",
+                    "description": "a collection of setting names that are related to the provided avatarDefinitionId"
+                }
+            }
+        },
+        "AvatarEventDefinitionObject": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the event defintion"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "Parameters and conditions. Valid operators are >, <, =, ==, >=, <=, !=, and, or '=' and '==' both do the same equals comparison. Valid keywords are attribute, avatar, avatardefinition, Boolean values true or false can also be used for value comparison."
+                }
+            }
+        },
+        "NotificationObject": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "MANDATORY Type of notification. Valid type is EMAIL, it's case insensitive."
+                },
+                "recipients": {
+                    "type": "string",
+                    "description": "MANDATORY List of emails associated with this notification. It should include at least one email."
+                },
+                "eventDefinitions": {
+                    "type": "string",
+                    "description": "MANDATORY List of eventDefinition url's associated with this notification. It should include at least one eventDefinition URL and eventDefinition should be existing within the current world."
+                },
+                "active": {
+                    "type": "string",
+                    "description": "Optional true activates notification and false de-activates notification. Default is true."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "MANDATORY Name of the notification which is not unique."
+                }
+            }
+        },
+        "DiscoverableDevicesObject": {
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "description": "The full URI of the avatar."
                 }
             }
         }
