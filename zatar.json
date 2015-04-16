@@ -3595,7 +3595,7 @@
             "properities": {
                 "name": {
                     "type": "object",
-                    "description": "The name of your Avatar definition",
+                    "description": "The name of your Avatar definition"
                     }
                 }
             }
