@@ -3596,7 +3596,6 @@
                 "name": {
                     "type": "object",
                     "description": "The name of your Avatar definition"
-                    }
                 }
             }
         },
