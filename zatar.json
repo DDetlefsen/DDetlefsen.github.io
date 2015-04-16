@@ -3596,8 +3596,6 @@
                 "name": {
                     "type": "object",
                     "description": "The name of your Avatar definition",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/AttributePropertiesObject"
                     }
                 }
             }
