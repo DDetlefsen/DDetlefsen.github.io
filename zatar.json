@@ -2,8 +2,11 @@
     "swagger": "2.0",
     "info": {
         "title": "Zatar's Client API",
-        "description": "Interactive API documentation (powered by Swagger)",
-        "version": "1.0.0"
+        "description": "Interactive Documentation for Zatar's Client Application API",
+        "version": "1.0.0",
+        "contact": {
+            "name": "developers@zatar.com"
+        }
     },
     "host": "api.zatar.com",
     "schemes": [
@@ -30,6 +33,13 @@
                         "schema": {
                             "$ref": "#/definitions/UserProfileObject"
                         }
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
                     }
                 ],
                 "tags": [
@@ -66,6 +76,13 @@
                         "description": "Your login token",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "tags": [
@@ -117,6 +134,13 @@
                         "schema": {
                             "$ref": "#/definitions/UserProfileObject"
                         }
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "update"
+                        ]
                     }
                 ],
                 "tags": [
@@ -171,6 +195,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "tags": [
                     "Users"
                 ],
@@ -215,7 +246,13 @@
                         }
                     }
                 ],
-                "security": [],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "tags": [
                     "Authentication"
                 ],
@@ -252,6 +289,13 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "tags": [
@@ -295,6 +339,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "tags": [
                     "Users",
                     "Authentication"
@@ -332,6 +383,13 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "tags": [
@@ -380,6 +438,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "tags": [
                     "Users"
                 ],
@@ -424,6 +489,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "tags": [
                     "Users"
                 ],
@@ -466,6 +538,13 @@
                         "in": "query",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "tags": [
@@ -515,6 +594,13 @@
                         "schema": {
                             "$ref": "#/definitions/WorldObject"
                         }
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "update"
+                        ]
                     }
                 ],
                 "tags": [
@@ -567,6 +653,13 @@
                 "tags": [
                     "Worlds"
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -615,6 +708,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -653,6 +753,13 @@
                 ],
                 "tags": [
                     "Avatars"
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -694,6 +801,13 @@
                 ],
                 "tags": [
                     "Avatars"
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -742,6 +856,13 @@
                 "tags": [
                     "Avatars"
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -785,6 +906,13 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "delete"
+                        ]
                     }
                 ],
                 "tags": [
@@ -849,6 +977,13 @@
                         "schema": {
                             "$ref": "#/definitions/AvatarObject"
                         }
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
                     }
                 ],
                 "responses": {
@@ -922,6 +1057,13 @@
                 "tags": [
                     "Avatars"
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -985,6 +1127,13 @@
                         "schema": {
                             "$ref": "#/definitions/AvatarObject"
                         }
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "update"
+                        ]
                     }
                 ],
                 "responses": {
@@ -1058,6 +1207,13 @@
                 "tags": [
                     "Avatars"
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -1110,6 +1266,13 @@
                         "description": "The resource ID of the avatar being updated.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "delete"
+                        ]
                     }
                 ],
                 "responses": {
@@ -1198,6 +1361,13 @@
                     "Avatars",
                     "Avatar History"
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -1250,6 +1420,13 @@
                 "tags": [
                     "Avatars",
                     "Jobs"
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -1310,6 +1487,13 @@
                     "Avatars",
                     "Jobs"
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -1369,6 +1553,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -1401,6 +1592,13 @@
                 "tags": [
                     "Avatars",
                     "Events"
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
                 ],
                 "summary": "??",
                 "description": "??",
@@ -1477,6 +1675,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "delete"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -1533,6 +1738,13 @@
                         "description": "The resource ID of the event defintion.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "responses": {
@@ -1597,6 +1809,13 @@
                         "schema": {
                             "$ref": "#/definitions/AvatarEventDefinitionObject"
                         }
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "update"
+                        ]
                     }
                 ],
                 "responses": {
@@ -1671,6 +1890,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -1727,6 +1953,13 @@
                         "description": "The resource ID of the world containing the avatar.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "responses": {
@@ -1791,6 +2024,13 @@
                         "description": "The resource ID of the avatar event profile to delete.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "delete"
+                        ]
                     }
                 ],
                 "responses": {
@@ -1859,6 +2099,13 @@
                         "description": "The resource ID of the event defintion.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "responses": {
@@ -1933,6 +2180,13 @@
                         "schema": {
                             "$ref": "#/definitions/AvatarEventDefinitionObject"
                         }
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "update"
+                        ]
                     }
                 ],
                 "responses": {
@@ -2019,6 +2273,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -2102,6 +2363,13 @@
                         "description": "Defines the offset in terms of ISO8601 date format. Expected value is an ISO8601 date format string and it should not be greater than current time. Only the events that have a eventDate before the specified eventEndDate will be included.",
                         "required": false,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "responses": {
@@ -2196,6 +2464,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -2257,6 +2532,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -2314,6 +2596,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -2368,6 +2657,13 @@
                         "description": "The resource ID of the notification.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "responses": {
@@ -2436,6 +2732,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "update"
+                        ]
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": "No Content"
@@ -2494,6 +2797,13 @@
                         "description": "The resource ID of the notification.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "delete"
+                        ]
                     }
                 ],
                 "responses": {
@@ -2558,6 +2868,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -2607,6 +2924,13 @@
                         "description": "The resource ID of the world containing the avatar.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "responses": {
@@ -2672,6 +2996,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "update"
+                        ]
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": "No Content"
@@ -2731,6 +3062,13 @@
                         "description": "The resource ID of the world containing the avatar.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "responses": {
@@ -2794,6 +3132,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "delete"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -2849,6 +3194,13 @@
                         "description": "The resource ID of the intended avatar group to contain the avatar.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
                     }
                 ],
                 "responses": {
@@ -2911,6 +3263,13 @@
                         "description": "Filters result to only show requested properties as well as avatarDefinitionId, homeWorld, href, sysPrefix.",
                         "required": false,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "responses": {
@@ -2980,6 +3339,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "delete"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -3039,6 +3405,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -3088,6 +3461,13 @@
                         "description": "The resource ID of the world containing the avatar.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "responses": {
@@ -3153,6 +3533,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "update"
+                        ]
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": "No Content"
@@ -3214,6 +3601,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -3267,6 +3661,13 @@
                         "description": "The resource ID of the avatar profile to retrieve.",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "delete"
+                        ]
                     }
                 ],
                 "responses": {
@@ -3333,6 +3734,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -3375,6 +3783,13 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "tags": [
@@ -3426,6 +3841,13 @@
                         "in": "path",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
                     }
                 ],
                 "tags": [
@@ -3487,6 +3909,13 @@
                         }
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "create"
+                        ]
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -3537,6 +3966,13 @@
                         "type": "string"
                     }
                 ],
+                "security": [
+                    {
+                        "OAuth": [
+                            "read"
+                        ]
+                    }
+                ],
                 "responses": {
                     "201": {
                         "description": "Created"
@@ -3560,6 +3996,29 @@
                         "description": "Unexpected error"
                     }
                 }
+            }
+        }
+    },
+    "security": [
+        {
+            "OAuth": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    ],
+    "securityDefinitions": {
+        "OAuth": {
+            "type": "oauth2",
+            "authorizationUrl": "https://api.zatar.com/v1/token",
+            "flow": "implicit",
+            "scopes": {
+                "create": "This application will have access to create new devices, new device groups, new device profiles, invite new members, and create new automations.",
+                "read": "This application will have access to read your worlds devices, device groups, device profiles, members, automations, and account settings.",
+                "update": "This application will have access to update your worlds, devices, device groups, device profiles, members, automations, and account settings.",
+                "delete": "This application will have access to delete devices, device groups, devie profiles, automations, and univite members."
             }
         }
     },
@@ -3632,63 +4091,11 @@
                 }
             }
         },
-        "RequiredAvatarDefinitionAttributesObject": {
-            "properities": {
-                "name": {
-                    "type": "object",
-                    "description": "The name of your Avatar definition"
-                }
-            }
-        },
         "WorldObject": {
             "properties": {
                 "name": {
                     "type": "string",
                     "description": "alphanumeric string (a-z, 0-9), characters -, _, and . supported, not case sensitive, must be between 8-64 characters long, cannot contain two periods next to each other"
-                }
-            }
-        },
-        "AttributePropertiesObject": {
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "The name of the attribute."
-                },
-                "dt": {
-                    "type": "string",
-                    "description": "Data Type: possible values are STRING."
-                },
-                "perm": {
-                    "type": "string",
-                    "description": "Permission: 0 = Client application cannot upate, 1 = ??, 2 = Client application updates trigger an update to be sent to Avatar's device."
-                },
-                "pt": {
-                    "type": "string",
-                    "description": "Property Type: Deprecated"
-                },
-                "uom": {
-                    "type": "string",
-                    "description": "Unit of Measurement: Reserved for future use"
-                },
-                "prc": {
-                    "type": "string",
-                    "description": "Precision: Reserved for future use"
-                },
-                "rng": {
-                    "type": "string",
-                    "description": "Range: Reserved for future use"
-                },
-                "acc": {
-                    "type": "string",
-                    "description": "??: Reserved for future use"
-                },
-                "stpk": {
-                    "type": "string",
-                    "description": "NEED NAME: The key of the key/value pair representing this attribute in the code of the device driver running on this Avatar's physical device."
-                },
-                "data": {
-                    "type": "string",
-                    "description": "Data: The value of this attribute."
                 }
             }
         },
@@ -3728,18 +4135,6 @@
                 }
             }
         },
-        "AvatarEventDefinitionObject": {
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "Name of the event defintion"
-                },
-                "expression": {
-                    "type": "string",
-                    "description": "Parameters and conditions. Valid operators are >, <, =, ==, >=, <=, !=, and, or '=' and '==' both do the same equals comparison. Valid keywords are attribute, avatar, avatardefinition, Boolean values true or false can also be used for value comparison."
-                }
-            }
-        },
         "NotificationObject": {
             "properties": {
                 "type": {
@@ -3769,6 +4164,93 @@
                 "href": {
                     "type": "string",
                     "description": "The full URI of the avatar."
+                }
+            }
+        },
+        "AvatarEventDefinitionObject": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the event defintion"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "Parameters and conditions. Valid operators are >, <, =, ==, >=, <=, !=, and, or '=' and '==' both do the same equals comparison. Valid keywords are attribute, avatar, avatardefinition, Boolean values true or false can also be used for value comparison."
+                }
+            }
+        },
+        "AttributePropertiesObject": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the attribute."
+                },
+                "dt": {
+                    "type": "string",
+                    "description": "Data Type: possible values are STRING."
+                },
+                "perm": {
+                    "type": "string",
+                    "description": "Permission: 0 = Client application cannot upate, 1 = Client application updates the avatar but does not trigger an update to happen to the Avatar's device, 2 = Client application updates trigger an update to be sent to Avatar's device."
+                },
+                "pt": {
+                    "type": "string",
+                    "description": "Property Type: Deprecated"
+                },
+                "uom": {
+                    "type": "string",
+                    "description": "Unit of Measurement: Reserved for future use"
+                },
+                "prc": {
+                    "type": "string",
+                    "description": "Precision: Reserved for future use"
+                },
+                "rng": {
+                    "type": "string",
+                    "description": "Range: Reserved for future use"
+                },
+                "acc": {
+                    "type": "string",
+                    "description": "Accuracy: Reserved for future use"
+                },
+                "stpk": {
+                    "type": "string",
+                    "description": "NEED NAME: The key of the key/value pair representing this attribute in the code of the device driver running on this Avatar's physical device."
+                },
+                "data": {
+                    "type": "string",
+                    "description": "Data: The value of this attribute."
+                }
+            }
+        },
+        "RequiredAvatarDefinitionAttributesObject": {
+            "properties": {
+                "Name": {
+                    "$ref": "#/definitions/AttributePropertiesObject"
+                },
+                "Status": {
+                    "$ref": "#/definitions/AttributePropertiesObject"
+                },
+                "Manufacturer": {
+                    "$ref": "#/definitions/AttributePropertiesObject"
+                },
+                "Model": {
+                    "$ref": "#/definitions/AttributePropertiesObject"
+                },
+                "Type": {
+                    "$ref": "#/definitions/AttributePropertiesObject"
+                },
+                "UDI": {
+                    "$ref": "#/definitions/AttributePropertiesObject"
+                },
+                "Locations": {
+                    "$ref": "#/definitions/AttributePropertiesObject"
+                },
+                "Firmware": {
+                    "$ref": "#/definitions/AttributePropertiesObject"
+                },
+                "avataruidef": {
+                    "$ref": "#/definitions/AttributePropertiesObject"
                 }
             }
         }
