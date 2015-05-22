@@ -110,9 +110,15 @@
         "/users/{user_id}": {
             "put": {
                 "summary": "Change the profile data in your account.",
-                "description": "Change the profile data in your account. You can only change your own user account data. Attempting to change another user's data will return an access error.",
+                "description": "Change the profile data in your account.",
                 "operationId": "putUserID",
                 "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
                     {
                         "name": "token",
                         "in": "query",
@@ -121,15 +127,9 @@
                         "type": "string"
                     },
                     {
-                        "name": "user_id",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "name": "User Profile Object",
                         "in": "body",
-                        "description": "The new profile data you wish to store in your account",
+                        "description": "A User object to be added to Zatar",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/UserProfileObject"
@@ -177,8 +177,8 @@
                 }
             },
             "get": {
-                "summary": "Retrieve a user's account data",
-                "description": "Retrieve the meta-data associated with a user profile. User accounts you have access to inlcude your own account and the accounts of anyone who has shared their Home World with you.",
+                "summary": "Retrieve your user account data",
+                "description": "Retrieve the meta-data associated with your user profile.",
                 "operationId": "getUserID",
                 "parameters": [
                     {
@@ -233,8 +233,8 @@
         "/authentokens": {
             "post": {
                 "summary": "Create a new authentication token",
-                "description": "Create a new authentication token. This token must be supplied as part of calls to many other API endpoints. Tokens expire after 12 hours.",
-                "operationId": "postAuthentoken",
+                "description": "Create a new authentication token by doing an HTTP POST.",
+                "operationId": "getAuthentoken",
                 "parameters": [
                     {
                         "name": "Login Object",
@@ -280,8 +280,8 @@
         },
         "/authentokens/{token_resource_id}": {
             "get": {
-                "summary": "Verify that a token is valid and has not expired",
-                "description": "Authentication tokens expire 12 hours after their creation. This endpoint enables you to verify that a token is valid and has not expired",
+                "summary": "Verify that a token is valid (not expired)",
+                "description": "Verify that a token is valid (not expired).",
                 "operationId": "getAuthentoken",
                 "parameters": [
                     {
@@ -326,7 +326,7 @@
         "/passwordtokens": {
             "post": {
                 "summary": "Reset your password",
-                "description": "To help users who have forgotten their password, this endpoint creates a temporary token which is used in the password resetting process.",
+                "description": "Reset your password",
                 "operationId": "postPasswordTokenoken",
                 "parameters": [
                     {
@@ -529,8 +529,8 @@
         },
         "/worlds": {
             "get": {
-                "summary": "Retrieve your collection of worlds",
-                "description": "Retrieve the collection of worlds you have access to. CRUDXO indicates your Home World. CRUDX indicates worlds that have been shared with you. Public_World indicates Zatar's public World.",
+                "summary": "Retrieve a collection of worlds",
+                "description": "Retrieve a collection of worlds via HTTP GET",
                 "operationId": "getWorlds",
                 "parameters": [
                     {
@@ -571,19 +571,18 @@
         },
         "/worlds/{world_id}": {
             "put": {
-                "summary": "Change a World's name.",
-                "description": "Currently only a World's name can be changed. To invite another user to a World, use the /invitetoken endpoints. Ownership of a World is not updatable.",
-                "operationId": "putWorld",
+                "summary": "Change some of the resources the world can contain",
+                "description": "Currently only name of the world can be changed. Invite a user to join a world does not use PUT. Transferring ownership of a world is currently not supported. The creator of the world remains the only owner.",
                 "parameters": [
                     {
-                        "name": "world_id",
-                        "in": "path",
+                        "name": "token",
+                        "in": "query",
                         "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "token",
-                        "in": "query",
+                        "name": "world_id",
+                        "in": "path",
                         "required": true,
                         "type": "string"
                     },
@@ -635,9 +634,8 @@
                 }
             },
             "get": {
-                "summary": "Retrieve data about a specific world",
-                "description": "Retrieve a world resource and its associated resources.",
-                "operationId": "getWorld",
+                "summary": "Retrieve a specific world",
+                "description": "Retrieves a world resource and its associated resources.",
                 "parameters": [
                     {
                         "name": "token",
@@ -686,9 +684,12 @@
         },
         "/avatardefinitions": {
             "post": {
-                "summary": "Add a new Avatar Defintion into your Home World",
-                "description": "Add a new Avatar Definiton into your Home World",
-                "operationId": "avatarDefinitions",              
+                "operationId": "avatarDefinitions",
+                "tags": [
+                    "Avatars"
+                ],
+                "summary": "NEED SUMMARY",
+                "description": "NEED DESCRIPTION",
                 "parameters": [
                     {
                         "name": "token",
@@ -707,9 +708,6 @@
                         }
                     }
                 ],
-                "tags": [
-                    "Avatars"
-                ],                  
                 "security": [
                     {
                         "OAuth": [
@@ -742,8 +740,8 @@
                 }
             },
             "get": {
-                "summary": "Retrieve all of the Avatar Definitions to which you have access",
-                "description": "Retrieve all of the Avatar Definitions to which you have access. This includes Avatar Definitions in your Home World (CRUDXO), those in any worlds you have been invited to (CRUDX) and the Zatar Public World (Public_World).",
+                "summary": "Retrieve a collection of avatardefinitions",
+                "description": "Retrieve a collection of avatardefinitions with an HTTP GET.This would retrieve all the publicly available avatar definitions and the avatar definitions from all the worlds that the user has read permissions on. ",
                 "operationId": "getAvatarDefinition",
                 "parameters": [
                     {
@@ -790,8 +788,8 @@
         },
         "/avatardefinitions/required": {
             "get": {
-                "summary": "Retrieve the list of required Avatar Defintion attributes.",
-                "description": "Retrieve the list of required Avatar Defintion attributes that must exist in new Avatar defintions.",
+                "summary": "List of required items in an Avatar defintions.",
+                "description": "Retrieve a list of the required attributes that must exist in new Avatar defintions. ",
                 "operationId": "AvatarDefinitionsRequiredGet",
                 "parameters": [
                     {
@@ -838,8 +836,8 @@
         },
         "/avatardefinitions/{avatar_defintion_id}": {
             "get": {
-                "summary": "Retrieve a specific Avatar Definition",
-                "description": "Retrieve a specific avatar definition. A user's access to Avatar Definitions include those in a user's Home World, in worlds the user has been invited to, and the Zatar Public World.",
+                "summary": "Retrieve a specific avatar definition",
+                "description": "Retrieve a specific avatar definition with an HTTP GET. The user only has access to public avatar definitions and the avatar definitions belonging to worlds that the user has read permissions on.",
                 "operationId": "getAvatarDefinition",
                 "parameters": [
                     {
@@ -893,8 +891,8 @@
                 }
             },
             "delete": {
-                "summary": "Deletes a specific Avatar Definition",
-                "description": "Delete a specific Avatar Definition. A user's access to Avatar Definitions include those in a user's Home World, in worlds the user has been invited to, and the Zatar Public World.",
+                "summary": "Deletes a specific avatar definition",
+                "description": "Deletes a specific avatar definition with an HTTP GET. The user only has access to public avatar definitions and the avatar definitions belonging to worlds that the user has read permissions on.",
                 "operationId": "getAvatarDefinition",
                 "parameters": [
                     {
@@ -950,12 +948,12 @@
         },
         "/worlds/{world_id}/avatars": {
             "post": {
-                "operationId": "avatarPost",
+                "operationId": "avatars",
                 "tags": [
                     "Avatars"
                 ],
-                "summary": "Create a new Avatar.",
-                "description": "Create a new Avatar by specifying the device UDI and Avatar Definition. The Avatar status attribute will indicate 'Claimed' instead of online or offline until a device starts sending data to Zatar targeting the Avatar. Any data sent by a device before this is performed will be dropped.",
+                "summary": "Create a new device avatar",
+                "description": "Create a new device avatar by registering a source and automatically pairing it to an avatar definition with an HTTP POST",
                 "parameters": [
                     {
                         "name": "token",
@@ -972,12 +970,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "Initial Avatar Object",
+                        "name": "Avatar Object",
                         "in": "body",
-                        "description": "Initial Avatar Object",
+                        "description": "Avatar Object",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/CreateAvatarObject"
+                            "$ref": "#/definitions/AvatarObject"
                         }
                     }
                 ],
@@ -1016,8 +1014,8 @@
                 }
             },
             "get": {
-                "summary": "Retrieve the most recent record of avatars in specific world",
-                "description": "Retrieve the most recent record of avatars in specific world.",
+                "summary": "Retrieve a collection of avatars in specific world",
+                "description": "Retrieve a collection of avatars from a user's account private world by performing an HTTP GET.",
                 "parameters": [
                     {
                         "name": "world_id",
@@ -1034,21 +1032,18 @@
                     {
                         "name": "limit",
                         "in": "query",
-                        "description": "Maximum numer of results to be returned"
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "offset",
                         "in": "query",
-                        "description": "How many objects in the sorted list of all possible object to skip before including objects in the result."
                         "required": false,
                         "type": "string"
                     },
                     {
                         "name": "sort",
                         "in": "query",
-                        "description": "Use 'asc' for ascending order. Use 'des' for descending order."
                         "required": false,
                         "type": "string"
                     },
@@ -4058,11 +4053,7 @@
                     "type": "string",
                     "description": "alphanumeric string (a-z, 0-9), case sensitive, must contain one upper case letter, must contain one lower case letter, must contain one number, must contain one special character (@#$%^&+), minimum 8 characters, maximum 16 characters"
                 }
-            },
-            "required": [
-                "email",
-                "password"
-            ]
+            }
         },
         "LoginObject": {
             "properties": {
@@ -4108,32 +4099,17 @@
                 }
             }
         },
-        "CreateAvatarObject": {
+        "AvatarObject": {
             "properties": {
-               "avatarDefinitionId": {
+                "avatarDefinitionId": {
                     "type": "string",
-                    "description": "The URI of the Avatar Definition used to define the Avatar."
+                    "description": "The URI of the Avatar Definition you wish to use to make this Avatar from."
                 },
                 "attributes": {
                     "type": "string",
                     "description": "The JSON object providing the initial attribute values of this Avatar. The only required attribute is the device's UDI."
                 }
-            },
-            "required": [
-                "avatarDefinitionId", 
-                "attributes"
-            ]
-        }
-        "AvatarObject": {
-            "properties": {
-                "attributes": {
-                    "type": "string",
-                    "description": "The JSON object providing the attribute values of this Avatar."
-                }
-            },
-            "required": [
-                "attributes"
-                ]
+            }
         },
         "AvatarGroupObject": {
             "properties": {
