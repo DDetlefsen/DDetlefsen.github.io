@@ -48,7 +48,6 @@
                 "responses": {
                     "201": {
                         "description": "The new resource was created. Payload contains newly created user."
-                       
                     },
                     "400": {
                         "description": "Bad request"
