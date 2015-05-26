@@ -58,7 +58,7 @@
                                 "worlds": {
                                     "href": "http://api.zatar.com/v1/worlds",
                                     "length": 2
-                                } 
+                                }, 
                                 "href" : "http://api.zatar.com/v1/users/ZOKYX0CKZJ2977H1",
                                 "cellPhoneNumber": null,
                                 "creationTime": 1411054419000,
