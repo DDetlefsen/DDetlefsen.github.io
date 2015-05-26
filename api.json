@@ -50,17 +50,26 @@
                         "description": "The new resource was created. Payload contains newly created user."
                     },
                     "400": {
-                        "description": "Bad request"
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }                        
                     },
                     "406": {
-                        "description": "Not acceptable"
-                    },
+                        "description": "Not acceptable",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }                    },
                     "415": {
-                        "description": "Unsupported media type"
-                    },
+                        "description": "Unsupported media type",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }                    },
                     "500": {
-                        "description": "Internal server error"
-                    },
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }                    },
                     "default": {
                         "description": "Unexpected error",
                         "schema": {
