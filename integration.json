@@ -89,8 +89,13 @@
                     "Users"
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK"
+                    "201": {
+                        "description": "Created",
+                        "examples": {
+                            "application/json": {
+                                "[object Object]": null
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthorized"
