@@ -62,7 +62,10 @@
                         "description": "Internal server error"
                     },
                     "default": {
-                        "description": "Unexpected error"
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }
                     }
                 }
             },
@@ -4251,6 +4254,25 @@
                 },
                 "avataruidef": {
                     "$ref": "#/definitions/AttributePropertiesObject"
+                }
+            }
+        },
+        "ErrorModel": {
+            "properties": {
+                "status": {
+                    "type":"integer",
+                    "description": "The error code"
+                },
+                "message": {
+                    "type":"string",
+                    "description": "A contextual message describing the nature of the response."
+                },
+                "developerMessage": {
+                    "type":"string",
+                    "description":"A contextual message describing the nature of the response"},
+                "moreInfo": {
+                    "type":"string",
+                    "description":"A contextual message describing the nature of the response"
                 }
             }
         }
