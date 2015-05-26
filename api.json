@@ -47,25 +47,8 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "The new resource was created. Payload contains newly created user.",
-                        "examples":{
-                            "application/json; charset=utf-8":{
-                                "email": "teamzatar@zebra.com",
-                                "firstname": null,
-                                "lastname": null,
-                                "location": null,
-                                "company": null,
-                                "worlds": {
-                                    "href": "http://api.zatar.com/v1/worlds",
-                                    "length": 2
-                                }, 
-                                "href" : "http://api.zatar.com/v1/users/ZOKYX0CKZJ2977H1",
-                                "cellPhoneNumber": null,
-                                "creationTime": 1411054419000,
-                                "lastModifiedTime": 1411054419000
-                                }   
-                            }
-                        }
+                        "description": "The new resource was created. Payload contains newly created user."
+                       
                     },
                     "400": {
                         "description": "Bad request"
