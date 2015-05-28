@@ -755,14 +755,7 @@
                 "summary": "Retrieve a collection of avatardefinitions",
                 "description": "Retrieve a collection of avatardefinitions with an HTTP GET.This would retrieve all the publicly available avatar definitions and the avatar definitions from all the worlds that the user has read permissions on. ",
                 "operationId": "getAvatarDefinition",
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
+                "parameters": [],
                 "tags": [
                     "Avatars"
                 ],
