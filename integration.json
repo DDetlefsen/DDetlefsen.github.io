@@ -4024,7 +4024,7 @@
                 "delete": "This application will have access to delete devices, device groups, devie profiles, automations, and univite members."
             },
             "flow": "application",
-            "tokenUrl": "https://api.zatar.com/v1/token"
+            "tokenUrl": "https://integration.zatar.com/v1/authorize"
         }
     },
     "definitions": {
