@@ -4017,14 +4017,14 @@
     "securityDefinitions": {
         "OAuth": {
             "type": "oauth2",
+            "authorizationUrl": "https://api.zatar.com/v1/token",
+            "flow": "implicit",
             "scopes": {
                 "create": "This application will have access to create new devices, new device groups, new device profiles, invite new members, and create new automations.",
                 "read": "This application will have access to read your worlds devices, device groups, device profiles, members, automations, and account settings.",
                 "update": "This application will have access to update your worlds, devices, device groups, device profiles, members, automations, and account settings.",
                 "delete": "This application will have access to delete devices, device groups, devie profiles, automations, and univite members."
-            },
-            "flow": "implicit",
-            "authorizationUrl":"https://integration.zatar.com/v1/authorize"
+            }
         }
     },
     "definitions": {
