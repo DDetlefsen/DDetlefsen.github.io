@@ -8,7 +8,7 @@
             "name": "developers@zatar.com"
         }
     },
-    "host": "api.zatar.com",
+    "host": "integration.zatar.com",
     "schemes": [
         "https"
     ],
@@ -4024,7 +4024,7 @@
     "securityDefinitions": {
         "OAuth": {
             "type": "oauth2",
-            "authorizationUrl": "https://api.zatar.com/v1/token",
+            "authorizationUrl": "https://integration.zatar.com/v1/authorize",
             "flow": "implicit",
             "scopes": {
                 "create": "This application will have access to create new devices, new device groups, new device profiles, invite new members, and create new automations.",
