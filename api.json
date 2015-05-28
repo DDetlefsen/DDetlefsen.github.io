@@ -800,7 +800,7 @@
                     {
                         "name": "token",
                         "in": "query",
-                        "required": true,
+                        "required": false,
                         "type": "string"
                     }
                 ],
