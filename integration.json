@@ -4023,7 +4023,7 @@
                 "update": "This application will have access to update your worlds, devices, device groups, device profiles, members, automations, and account settings.",
                 "delete": "This application will have access to delete devices, device groups, devie profiles, automations, and univite members."
             },
-            "flow": "application",
+            "flow": "implicit",
             "tokenUrl": "https://integration.zatar.com/v1/authorize"
         }
     },
