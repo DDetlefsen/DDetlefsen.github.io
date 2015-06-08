@@ -246,7 +246,7 @@
                 ],
                 "tags": [
                     "Users",
-                    "Authentication"
+                    "Passwords"
                 ],
                 "responses": {
                     "201": {
@@ -292,7 +292,7 @@
                 ],
                 "tags": [
                     "Users",
-                    "Authentication"
+                    "Passwords"
                 ],
                 "responses": {
                     "201": {
