@@ -8,7 +8,7 @@
             "name": "developers@zatar.com"
         }
     },
-    "host": "integration.zatar.com",
+    "host": "beta.zatar.com",
     "schemes": [
         "https"
     ],
