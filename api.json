@@ -4017,7 +4017,7 @@
     "securityDefinitions": {
         "OAuth": {
             "type": "oauth2",
-            "authorizationUrl": "https://integration.zatar.com/v1/authorize",
+            "authorizationUrl": "https://beta.zatar.com/v1/authorize",
             "flow": "implicit",
             "scopes": {
                 "create": "This application will have access to create new devices, new device groups, new device profiles, invite new members, and create new automations.",
