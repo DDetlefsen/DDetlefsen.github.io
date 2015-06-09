@@ -3422,17 +3422,17 @@
   "definitions": {
     "UserProfileObject": {
       "properties": {
-        "first_name": {
-          "type": "string",
-          "description": "First name of the Zatar user. Support for alphabet characters only (a-z)(A-Z), support for special character space [ ], maximum 64 characters."
-        },
-        "last_name": {
-          "type": "string",
-          "description": "Last name of the Zatar user. Support for alphabet characters only (a-z)(A-Z), support for special character apostrophe', support for special character dash-, support for special character space [ ], maximum 64 characters."
-        },
         "email": {
           "type": "string",
           "description": "Email address of the Zatar user. Must meet minimum email format requirements according to RFC"
+        },
+        "firstname": {
+          "type": "string",
+          "description": "First name of the Zatar user. Support for alphabet characters only (a-z)(A-Z), support for special character space [ ], maximum 64 characters."
+        },
+        "lastname": {
+          "type": "string",
+          "description": "Last name of the Zatar user. Support for alphabet characters only (a-z)(A-Z), support for special character apostrophe', support for special character dash-, support for special character space [ ], maximum 64 characters."
         },
         "location": {
           "type": "string",
@@ -3445,6 +3445,38 @@
         "company": {
           "type": "string",
           "description": "Alphanumeric string (a-z, 0-9), maximum 64 characters."
+        },
+        "profileImageUri": {
+          "type": "string",
+          "description": "Alphanumeric string (a-z, 0-9), maximum 64 characters."
+        },
+        "acceptedTermsVersion": {
+          "type": "string",
+          "description": "The verison number of the most recent T&C document the user agreed to. Alphanumeric string (a-z, 0-9), maximum 64 characters."
+        },
+        "industryInterest": {
+          "type": "string",
+          "description": "Alphanumeric string (a-z, 0-9), maximum 64 characters."
+        },
+        "developerInterest": {
+          "type": "string",
+          "description": "Alphanumeric string (a-z, 0-9), maximum 64 characters."
+        },
+        "organizations": {
+          "type": "string",
+          "description": "Alphanumeric string (a-z, 0-9), maximum 64 characters."
+        },
+        "permitsMarketingCommunication": {
+          "type": "string",
+          "description": "Alphanumeric string (a-z, 0-9), maximum 64 characters."
+        },
+        "salutation": {
+          "type": "string",
+          "description": "Alphanumeric string (a-z, 0-9), maximum 64 characters."
+        },
+        "accountType": {
+          "type": "string",
+          "description": "only supported values are 'BASIC' and 'DEVELOPER'"
         },
         "password": {
           "type": "string",
